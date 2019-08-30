@@ -42,7 +42,7 @@
 \alias{IDate-class}
 \alias{ITime-class}
 
-\title{ Integer based date class }
+\title{ Integer-backed date class }
 \description{
    Date and time classes with integer storage for fast sorting and
    grouping. Still experimental!

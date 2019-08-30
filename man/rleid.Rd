@@ -1,7 +1,7 @@
 \name{rleid}
 \alias{rleid}
 \alias{rleidv}
-\title{Generate run-length type group id}
+\title{Generate run-length type group ID}
 \description{
    A convenience function for generating a \emph{run-length} type \emph{id} column to be used in grouping operations. It accepts atomic vectors, lists, data.frames or data.tables as input.
 }

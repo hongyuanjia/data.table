@@ -1,6 +1,6 @@
 \name{print.data.table}
 \alias{print.data.table}
-\title{ data.table Printing Options }
+\title{ data.table printing options }
 \description{
   \code{print.data.table} extends the functionalities of \code{print.data.frame}.
 

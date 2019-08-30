@@ -1,7 +1,7 @@
 \name{rowid}
 \alias{rowid}
 \alias{rowidv}
-\title{ Generate unique row ids within each group}
+\title{ Generate unique row IDs within each group}
 \description{
    Convenience functions for generating a unique row ids within each group. It accepts atomic vectors, lists, data.frames or data.tables as input.
 

@@ -5,7 +5,7 @@
 \alias{rollup.data.table}
 \alias{cube.data.table}
 \alias{groupingsets.data.table}
-\title{ Grouping Set aggregation for data tables }
+\title{ Grouping Set aggregation for data.tables }
 \description{
   Calculate aggregates at various levels of groupings producing multiple (sub-)totals. Reflects SQLs \emph{GROUPING SETS} operations.
 }

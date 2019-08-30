@@ -3,10 +3,10 @@
 \alias{\%like\%}
 \alias{\%ilike\%}
 \alias{\%flike\%}
-\title{ Convenience function for calling grep. }
+\title{ Convenience function for calling grep }
 \description{
   Intended for use in \code{i} in \code{\link[=data.table]{[.data.table}}, i.e., for subsetting/filtering.
-  
+
   Syntax should be familiar to SQL users, with interpretation as regex.
 }
 \usage{

@@ -106,7 +106,7 @@ DT[order(Petal.Width)][1:5]
 ### Stay up-to-date
 
 - Click the **Watch** button at the top and right of GitHub project page
-- Read the [NEWS file](https://github.com/Rdatatable/data.table/blob/master/NEWS.md) (updated with every new feature/bug fix)
+- Read the [NEWS file](NEWS.md) (updated with every new feature/bug fix)
 - Follow [#rdatatable](https://twitter.com/hashtag/rdatatable) on Twitter
 - Watch recent [Presentations](https://github.com/Rdatatable/data.table/wiki/Presentations)
 - Read recent [Articles](https://github.com/Rdatatable/data.table/wiki/Articles)

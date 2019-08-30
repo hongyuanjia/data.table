@@ -1,7 +1,7 @@
 \name{all.equal}
 \alias{all.equal}
 \alias{all.equal.data.table}
-\title{ Equality Test Between Two Data Tables }
+\title{ Equality test between two data.tables }
 \description{
   Convenient test of data equality between \code{data.table} objects. Performs some factor level \emph{stripping}.
 }

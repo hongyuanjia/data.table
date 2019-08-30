@@ -6,7 +6,7 @@
 \alias{anyDuplicated}
 \alias{anyDuplicated.data.table}
 \alias{uniqueN}
-\title{ Determine Duplicate Rows }
+\title{ Determine duplicate rows }
 \description{
 \code{duplicated} returns a logical vector indicating which rows of a
 \code{data.table} are duplicates of a row with smaller subscripts.

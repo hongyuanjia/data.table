@@ -6,7 +6,7 @@
 \alias{.GRP}
 \alias{.BY}
 \alias{.N}
-\title{ Special symbols }
+\title{ Special symbols: .SD, .BY, .N, .I, .GRP }
 \description{
     \code{.SD}, \code{.BY}, \code{.N}, \code{.I} and \code{.GRP} are \emph{read only} symbols for use in \code{j}. \code{.N} can be used in \code{i} as well. See the vignettes and examples here and in \code{\link{data.table}}.
 }
