@@ -140,3 +140,28 @@ SEXP fifelseR(SEXP l, SEXP a, SEXP b, SEXP na) {
   UNPROTECT(nprotect);
   return ans;
 }
+
+SEXP fcase(SEXP args, SEXP default_value) {
+  int n=length(args);
+  if (n == 0) return(default_value);
+  if (n % 2) error("Must supply an even number of arguments in ..., consisting of logical condition, resulting value pairs (in that order); received %d inputs", n);
+  SEXPTYPE valType;
+  SEXP thisArg;
+  for (int i = 0; i<n; i++) {
+    //Rprintf("i=%d; type=%s\n", i, type2char(TYPEOF(VECTOR_ELT(args, i))));
+    thisArg = CAR(args); args = CDR(args);
+    Rprintf("i=%d; type=%s\n", i, type2char(TYPEOF(thisArg)));
+  }
+  /*for (int i=0; i<n; i+=2) {
+    if (TYPEOF(CAR(args) != LGLSXP)) error("Odd inputs to fcase must be logical but element %d is %s", i+1, type2char(TYPEOF(CAR(args))));
+    thisArg = CAR(args);
+    args = CDR(args);
+    if (args == R_NilValue) break;
+    if (even) {
+
+    } else {
+
+    }
+  }*/
+  return(R_NilValue);
+}

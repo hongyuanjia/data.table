@@ -88,6 +88,7 @@ SEXP islockedR();
 
 // .Externals
 SEXP fastmean();
+SEXP fcase();
 
 static const
 R_CallMethodDef callMethods[] = {
@@ -181,6 +182,7 @@ R_CallMethodDef callMethods[] = {
 static const
 R_ExternalMethodDef externalMethods[] = {
 {"Cfastmean", (DL_FUNC) &fastmean, -1},
+{"Cfcase", (DL_FUNC) &fcase, -1},
 {NULL, NULL, 0}
 };
 
