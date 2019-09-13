@@ -175,6 +175,7 @@ R_CallMethodDef callMethods[] = {
 {"C_unlock", (DL_FUNC) &unlock, -1},
 {"C_islocked", (DL_FUNC) &islockedR, -1},
 {"CfrollapplyR", (DL_FUNC) &frollapplyR, -1},
+{"CmsgR", (DL_FUNC) &msgR, -1},
 {NULL, NULL, 0}
 };
 

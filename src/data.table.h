@@ -228,3 +228,5 @@ SEXP islockedR(SEXP x);
 
 // types.c
 char *end(char *start);
+void msg(ans_t *ans, int n, bool verbose);
+SEXP msgR(SEXP status, SEXP x, SEXP k);

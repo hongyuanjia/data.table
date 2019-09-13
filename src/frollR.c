@@ -220,7 +220,8 @@ SEXP frollfunR(SEXP fun, SEXP obj, SEXP k, SEXP fill, SEXP algo, SEXP align, SEX
     }
   }
 
-  for (R_len_t i=0; i<nx; i++) {                                // raise errors and warnings, as of now messages are not being produced
+  msg(dans, nx*nk, verbose);
+  /*for (R_len_t i=0; i<nx; i++) {                                // raise errors and warnings, as of now messages are not being produced
     for (R_len_t j=0; j<nk; j++) {
       if (verbose && (dans[i*nk+j].message[0][0] != '\0'))
         Rprintf("%s: %d:\n%s", __func__, i*nk+j+1, dans[i*nk+j].message[0]);
@@ -235,7 +236,7 @@ SEXP frollfunR(SEXP fun, SEXP obj, SEXP k, SEXP fill, SEXP algo, SEXP align, SEX
         error("%s: %d: %s", __func__, i*nk+j+1, err_msg); // # nocov because only caused by malloc
       } // # nocov end
     }
-  }
+  }*/
 
   if (verbose)
     Rprintf("%s: processing of %d column(s) and %d window(s) took %.3fs\n", __func__, nx, nk, omp_get_wtime()-tic);

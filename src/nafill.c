@@ -173,7 +173,8 @@ SEXP nafillR(SEXP obj, SEXP type, SEXP fill, SEXP inplace, SEXP cols, SEXP verbo
     }
   }
 
-  for (R_len_t i=0; i<nx; i++) {
+  msg(vans, nx, bverbose);
+  /*for (R_len_t i=0; i<nx; i++) {
     if (bverbose && (vans[i].message[0][0] != '\0'))
       Rprintf("%s: %d: %s", __func__, i+1, vans[i].message[0]);
     if (vans[i].message[1][0] != '\0')
@@ -186,7 +187,7 @@ SEXP nafillR(SEXP obj, SEXP type, SEXP fill, SEXP inplace, SEXP cols, SEXP verbo
       free(vans);
       error("%s: %d: %s", __func__, i+1, err_msg); // # nocov because only caused by malloc
     } // # nocov end
-  }
+  }*/
 
   if (bverbose)
     Rprintf("%s: parallel processing of %d column(s) took %.3fs\n", __func__, nx, toc-tic);
