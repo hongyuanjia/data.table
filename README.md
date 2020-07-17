@@ -2,7 +2,7 @@
 # data.table <a href="http://r-datatable.com"><img src="https://raw.githubusercontent.com/Rdatatable/data.table/master/.graphics/logo.png" align="right" height="140" /></a>
 
 <!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version/data.table)](https://cran.r-project.org/web/checks/check_results_data.table.html)
+[![CRAN status](https://cranchecks.info/badges/flavor/release/data.table)](https://cran.r-project.org/web/checks/check_results_data.table.html)
 [![Travis build status](https://travis-ci.org/Rdatatable/data.table.svg?branch=master)](https://travis-ci.org/Rdatatable/data.table)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/kayjdh5qtgymhoxr/branch/master?svg=true)](https://ci.appveyor.com/project/Rdatatable/data-table)
 [![Codecov test coverage](https://codecov.io/github/Rdatatable/data.table/coverage.svg?branch=master)](https://codecov.io/github/Rdatatable/data.table?branch=master)
@@ -36,22 +36,14 @@
 * fast and feature rich **reshaping** data: **[`?dcast`](https://rdatatable.gitlab.io/data.table/reference/dcast.data.table.html)** (_pivot/wider/spread_) and **[`?melt`](https://rdatatable.gitlab.io/data.table/reference/melt.data.table.html)** (_unpivot/longer/gather_)
 * **any R function from any R package** can be used in queries not just the subset of functions made available by a database backend, also columns of type `list` are supported
 * has **[no dependencies](https://en.wikipedia.org/wiki/Dependency_hell)** at all other than base R itself, for simpler production/maintenance
-* the R dependency is **as old as possible for as long as possible** and we continuously test against that version; e.g. v1.11.0 released on 5 May 2018 bumped the dependency up from 5 year old R 3.0.0 to 4 year old R 3.1.0
+* the R dependency is **as old as possible for as long as possible**, dated April 2014, and we continuously test against that version; e.g. v1.11.0 released on 5 May 2018 bumped the dependency up from 5 year old R 3.0.0 to 4 year old R 3.1.0
 
 ## Installation
 
-``` r
+```r
 install.packages("data.table")
-```
 
-### Development version
-
-```r
-install.packages("data.table", repos="https://Rdatatable.gitlab.io/data.table")
-```
-
-or update only if newer revision is available
-```r
+# latest development version:
 data.table::update.dev.pkg()
 ```
 
@@ -61,9 +53,9 @@ See [the Installation wiki](https://github.com/Rdatatable/data.table/wiki/Instal
 
 Use `data.table` subset `[` operator the same way you would use `data.frame` one, but...
 
-* no need to prefix columns with `DT$`
-* any valid expression is allowed in `j` argument
-* extra argument `by` to compute `j` by group
+* no need to prefix each column with `DT$` (like `subset()` and `with()` but built-in)
+* any R expression using any package is allowed in `j` argument, not just list of columns
+* extra argument `by` to compute `j` expression by group
 
 ```r
 library(data.table)
@@ -82,6 +74,7 @@ DT[Petal.Width > 1.0, mean(Petal.Length), by = Species]
 
 * [Introduction to data.table](https://cloud.r-project.org/web/packages/data.table/vignettes/datatable-intro.html) vignette
 * [Getting started](https://github.com/Rdatatable/data.table/wiki/Getting-started) wiki page
+* [Examples](https://rdatatable.gitlab.io/data.table/reference/data.table.html#examples) produced by `example(data.table)`
 
 ### Cheatsheets
 
@@ -89,7 +82,7 @@ DT[Petal.Width > 1.0, mean(Petal.Length), by = Species]
 
 ## Community
 
-`data.table` is widely used by the R community. As of July 2019, it was used by over 680 CRAN and Bioconductor packages and was the [9th most starred](http://www.r-pkg.org/starred) R package on GitHub. If you need help, the `data.table` community is active StackOverflow, with nearly [9,000 questions](http://stackoverflow.com/questions/tagged/data.table).
+`data.table` is widely used by the R community. It is being directly used by hundreds of CRAN and Bioconductor packages, and indirectly by thousands. It is one of the [top most starred](http://www.r-pkg.org/starred) R package on GitHub. If you need help, the `data.table` community is active on [StackOverflow](http://stackoverflow.com/questions/tagged/data.table).
 
 ### Stay up-to-date
 

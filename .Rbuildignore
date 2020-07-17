@@ -1,6 +1,13 @@
 ^\.Rprofile$
 ^data\.table_.*\.tar\.gz$
 ^vignettes/plots/figures$
+^\.Renviron$
+^[^/]+\.R$
+^[^/]+\.csv$
+^[^/]+\.csvy$
+^[^/]+\.RDS$
+^[^/]+\.diff$
+^[^/]+\.patch$
 
 ^\.ci$
 ^\.dev$
@@ -15,6 +22,7 @@
 ^NEWS\.0\.md$
 ^README\.md$
 ^_pkgdown\.yml$
+^src/Makevars$
 
 ^\.RData$
 ^\.Rhistory$
@@ -29,3 +37,5 @@
 
 ^bus$
 ^pkgdown$
+^lib$
+^library$

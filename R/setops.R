@@ -41,8 +41,7 @@ funique = function(x) {
   if (!identical(sort(names(x)), sort(names(y)))) stop("x and y must have the same column names")
   if (!identical(names(x), names(y))) stop("x and y must have the same column order")
   bad_types = c("raw", "complex", if (block_list) "list")
-  found = bad_types %chin% c(vapply(x, typeof, FUN.VALUE = ""),
-                             vapply(y, typeof, FUN.VALUE = ""))
+  found = bad_types %chin% c(vapply_1c(x, typeof), vapply_1c(y, typeof))
   if (any(found)) stop("unsupported column type", if (sum(found) > 1L) "s" else "",
                        " found in x or y: ", brackify(bad_types[found]))
   super = function(x) {
@@ -104,8 +103,13 @@ fsetequal = function(x, y, all=TRUE) {
 # all.equal ----
 
 all.equal.data.table = function(target, current, trim.levels=TRUE, check.attributes=TRUE, ignore.col.order=FALSE, ignore.row.order=FALSE, tolerance=sqrt(.Machine$double.eps), ...) {
-  stopifnot(is.logical(trim.levels), is.logical(check.attributes), is.logical(ignore.col.order), is.logical(ignore.row.order), is.numeric(tolerance))
-  if (!is.data.table(target) || !is.data.table(current)) stop("'target' and 'current' must both be data.tables")
+  stopifnot(is.logical(trim.levels), is.logical(check.attributes), is.logical(ignore.col.order), is.logical(ignore.row.order), is.numeric(tolerance), is.data.table(target))
+
+  if (!is.data.table(current)) {
+    if (check.attributes) return(paste0('target is data.table, current is ', data.class(current)))
+    try({current = as.data.table(current)}, silent = TRUE)
+    if (!is.data.table(current)) return('target is data.table but current is not and failed to be coerced to it')
+  }
 
   msg = character(0L)
   # init checks that detect high level all.equal
@@ -176,7 +180,7 @@ all.equal.data.table = function(target, current, trim.levels=TRUE, check.attribu
   if (ignore.row.order) {
     if (".seqn" %chin% names(target))
       stop("None of the datasets to compare should contain a column named '.seqn'")
-    bad.type = setNames(c("raw","complex","list") %chin% c(vapply(current, typeof, FUN.VALUE = ""), vapply(target, typeof, FUN.VALUE = "")), c("raw","complex","list"))
+    bad.type = setNames(c("raw","complex","list") %chin% c(vapply_1c(current, typeof), vapply_1c(target, typeof)), c("raw","complex","list"))
     if (any(bad.type))
       stop("Datasets to compare with 'ignore.row.order' must not have unsupported column types: ", brackify(names(bad.type)[bad.type]))
     if (between(tolerance, 0, sqrt(.Machine$double.eps), incbounds=FALSE)) {
@@ -212,13 +216,12 @@ all.equal.data.table = function(target, current, trim.levels=TRUE, check.attribu
       tolerance = 0
     }
     jn.on = copy(names(target)) # default, possible altered later on
-    char.cols = vapply_1c(target,typeof)=="character"
-    if (!identical(tolerance, 0)) { # handling character columns only for tolerance!=0
-      if (all(char.cols)) {
-        msg = c(msg, "Both datasets have character columns only, together with ignore.row.order this force 'tolerance' argument to 0, for character columns it does not have effect")
+    dbl.cols = vapply_1c(target,typeof)=="double"
+    if (!identical(tolerance, 0)) {
+      if (!any(dbl.cols)) { # dbl.cols handles (removed) "all character columns" (char.cols) case as well
         tolerance = 0
-      } else if (any(char.cols)) { # character col cannot be the last one during rolling join
-        jn.on = jn.on[c(which(char.cols), which(!char.cols))]
+      } else {
+        jn.on = jn.on[c(which(!dbl.cols), which(dbl.cols))] # double column must be last for rolling join
       }
     }
     if (target_dup && current_dup) {
